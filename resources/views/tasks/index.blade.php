@@ -13,7 +13,7 @@
             </div>
             <div class="list-group">
               @foreach ($folders as $folder)
-                <a href="{{ route('tasks.index', ['id' => $folder->id]) }}" class="list-group-item {{ $current_folder_id === $folder->id ? 'active' : '' }}">
+                <a href="{{ route('tasks.index', ['folder' => $folder->id]) }}" class="list-group-item {{ $current_folder_id === $folder->id ? 'active' : '' }}">
                   <!-- id…ルートの{is}にDBから取ってきた項目ごとのidを入れてリンクにするように指示 class…閲覧しているフォルダのidとこの項目のidが合致する場合activを追加 -->
                 {{ $folder->title }}
                 </a>
@@ -26,7 +26,7 @@
             <div class="panel-heading">タスク</div>
             <div class="panel-body">
             	<div class="text-right">
-                <a href="{{ route('tasks.create', ['id' => $current_folder_id]) }}" class="btn btn-default btn-block">
+                <a href="{{ route('tasks.create', $folder) }}" class="btn btn-default btn-block">
                 	タスクを追加する
                 </a>
             	</div>
@@ -48,7 +48,7 @@
                     <span class="label {{ $task->status_class }}">{{ $task->status_label }}</span>
                   </td>
                   <td>{{ $task->formatted_due_date }}</td>
-                  <td><a href="{{ route('tasks.edit', ['id' => $task->folder_id, 'task_id' => $task->id]) }}">編集</a></td>
+                  <td><a href="{{ route('tasks.edit', ['folder' => $task->folder_id, 'task' => $task->id]) }}">編集</a></td>
                 </tr>
                 @endforeach
             </tbody>

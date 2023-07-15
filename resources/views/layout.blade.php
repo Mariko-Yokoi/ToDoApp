@@ -11,7 +11,7 @@
 <body>
 <header>
   <nav class="my-navbar">
-    <a class="my-navbar-brand" href="/folders/1/tasks/">ToDo App</a>
+    <a class="my-navbar-brand" href="/">ToDo App</a>
     {{-- ヘッダーの出し分け --}}
     <div class="my-navber-control">
       @if(Auth::check())
